@@ -42,3 +42,6 @@ jobs:
 Repository must have:
 
 - A valid `.all-contributorsrc` file
+- `GITHUB_TOKEN` must be configured with the appropriate workflow permissions:
+  - enable read and write permissions
+  - enable allow github actions to create and approve pull requests

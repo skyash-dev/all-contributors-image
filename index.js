@@ -38,7 +38,12 @@ try {
   // file doesn't exist
 }
 
-if(existingBuffer && contentBuffer.equals(existingBuffer)) return;
+console.log(existingBuffer)
+console.log(contentBuffer)
+if(existingBuffer && contentBuffer.equals(existingBuffer)) {
+  console.log("equal")
+  return
+};
 
 const content = contentBuffer.toString("base64");
 // get base branch sha

@@ -23,8 +23,24 @@ const data = await res.json();
 const contributors = data.contributors;
 
 const contentBuffer = await generateImage(contributors);
-const content = contentBuffer.toString("base64");
+let existingBuffer = null;
 
+try {
+  const existing = await fetch(
+    `https://raw.githubusercontent.com/${owner}/${repo}/${baseBranch}/contributors.png`,
+  );
+
+  if (existing.ok) {
+    const arrayBuffer = await existing.arrayBuffer();
+    existingBuffer = Buffer.from(arrayBuffer);
+  }
+} catch {
+  // file doesn't exist
+}
+
+if(existingBuffer && contentBuffer.equals(existingBuffer)) process.exit(0);
+
+const content = contentBuffer.toString("base64");
 // get base branch sha
 const { data: baseRef } = await octokit.rest.git.getRef({
   owner,

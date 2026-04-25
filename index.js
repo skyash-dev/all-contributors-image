@@ -42,7 +42,7 @@ console.log(existingBuffer)
 console.log(contentBuffer)
 if(existingBuffer && contentBuffer.equals(existingBuffer)) {
   console.log("equal")
-  return
+  process.exit(0);
 };
 
 const content = contentBuffer.toString("base64");

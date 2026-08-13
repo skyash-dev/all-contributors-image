@@ -33,15 +33,17 @@ jobs:
 
 ## Inputs
 
-| name   | required | description                                                                          |
-| ------ | -------- | ------------------------------------------------------------------------------------ |
-| token  | yes      | github token used for api calls                                                      |
+| name | type | required | description |
+|---|---|---:|---|
+| `token` | `string` | yes | token used for api calls |
+| `base-branch` | `string` | no | branch used as the base/reference branch (default: main) |
+
+PRs opened with the default `GITHUB_TOKEN` won't trigger other workflows (e.g. CI checks) on that PR. If you want checks to run on the generated PR, pass a personal access token instead (e.g. `secrets.ACCESS_TOKEN`) with the same permissions.
 
 ## Requirements
 
 Repository must have:
 
 - A valid `.all-contributorsrc` file
-- `GITHUB_TOKEN` must be configured with the appropriate workflow permissions:
-  - enable read and write permissions
-  - enable allow github actions to create and approve pull requests
+- The workflow must grant `contents: write` and `pull-requests: write` permissions (see usage example above)
+- "Allow GitHub Actions to create and approve pull requests" must be enabled in repo settings.

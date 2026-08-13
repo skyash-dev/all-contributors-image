@@ -24,10 +24,9 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    steps:
-      - name: Generate contributors image on main branch
-        uses: processing/all-contributors-image@v1
-        with:
+    permissions:
+      contents: write
+      pull-requests: write
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 

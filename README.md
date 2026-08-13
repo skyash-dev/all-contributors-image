@@ -28,6 +28,7 @@ jobs:
       contents: write
       pull-requests: write
           token: ${{ secrets.GITHUB_TOKEN }}
+          base-branch: my-branch
 ```
 
 ## Inputs

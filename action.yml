@@ -5,6 +5,9 @@ author: p5.js contributors & The Processing Foundation
 inputs:
   token:
     description: GitHub token
+  base-branch:
+    description: Base/Reference branch
+    default: main
 
 runs:
   using: composite
